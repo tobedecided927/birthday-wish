@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Disha 💖</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to bottom right, #ffe6f0, #ffd9ec);
+      text-align: center;
+      overflow-x: hidden;
+    }
+
+    h1 {
+      margin-top: 80px;
+      font-size: 2.8rem;
+      font-family: 'Pacifico', cursive;
+      color: #ff2e93;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #4b2c2c;
+      max-width: 90%;
+      margin: 20px auto;
+      line-height: 1.6;
+    }
+
+    button {
+      background: linear-gradient(135deg, #ff3399, #ff66cc);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 1rem;
+      border-radius: 50px;
+      cursor: pointer;
+      margin: 10px;
+      transition: all 0.3s ease;
+      z-index: 10;
+      position: relative;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    #surprise, #video-section {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #c2185b;
+      display: none;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin: 30px auto;
+      max-width: 95%;
+    }
+
+    .gallery img {
+      width: 220px;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 15px;
+      cursor: pointer;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Slideshow Modal */
+    .slideshow-modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .slideshow-modal img {
+      max-width: 90%;
+      max-height: 80vh;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+
+    .nav-btn {
+      background: white;
+      border: none;
+      font-size: 2rem;
+      padding: 10px;
+      margin: 10px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    video {
+      width: 90%;
+      max-width: 600px;
+      border-radius: 15px;
+      margin-top: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Love Letter Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background: white;
+      padding: 30px;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 20px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      position: relative;
+      font-family: 'Courier New', monospace;
+      white-space: pre-wrap;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 2rem;
+      color: #ff3399;
+      cursor: pointer;
+    }
+
+    /* Falling Hearts */
+    .heart {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      transform: rotate(45deg);
+      animation: fall 6s linear infinite;
+      opacity: 0.8;
+      z-index: 0;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: '';
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -10px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: -10px;
+      top: 0;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(45deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 2rem; }
+      .gallery img { width: 90%; height: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Happy Birthday Dishaaaaaa!!! 🎉</h1>
+  <p>
+    You brighten my world every single day. <br>
+    I'm so lucky to have you in my life. Thank you for being you. 💖
+  </p>
+
+  <button onclick="showSurprise()">Click for a Surprise 🎁</button>
+
+  <div id="surprise">
+    You mean the world to me 💞 <br>
+    Let’s celebrate many more birthdays together! 🥰<br><br>
+    <button onclick="showVideo()">🎬 Watch Message</button>
+    <button onclick="showLetter()">📜 Read Love Letter</button>
+  </div>
+
+  <!-- Birthday video -->
+  <div id="video-section">
+    <video controls poster="/image7.jpeg">
+      <source src="/video.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <!-- Gallery -->
+  <div class="gallery">
+    <img src="/image1.jpeg" alt="1" onclick="openSlideshow(0)">
+    <img src="/image2.jpeg" alt="2" onclick="openSlideshow(1)">
+    <img src="/image3.jpeg" alt="3" onclick="openSlideshow(2)">
+    <img src="/image4.jpeg" alt="4" onclick="openSlideshow(3)">
+    <img src="/image5.jpeg" alt="5" onclick="openSlideshow(4)">
+    <img src="/image6.jpeg" alt="6" onclick="openSlideshow(5)">
+    <img src="/image8.jpeg" alt="8" onclick="openSlideshow(6)">
+    <img src="/image9.jpeg" alt="9" onclick="openSlideshow(8)">
+    <img src="/image10.jpeg" alt="10" onclick="openSlideshow(9)">
+    <img src="/image11.jpeg" alt="11" onclick="openSlideshow(10)">
+  </div>
+
+  <!-- Slideshow Modal -->
+  <div class="slideshow-modal" id="slideshow">
+    <button class="nav-btn" onclick="prevSlide()">❮</button>
+    <img id="slide-img" src="">
+    <button class="nav-btn" onclick="nextSlide()">❯</button>
+    <br>
+    <button onclick="closeSlideshow()">Close ✖</button>
+  </div>
+
+  <!-- Love Letter Modal -->
+  <div id="typewriterModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeLetter()">&times;</span>
+      <h2>To My Love, Disha 💖</h2>
+      <p id="typewriter-text"></p>
+    </div>
+  </div>
+
+  <!-- Background Music -->
+  <audio id="bg-music" loop>
+    <source src="/happybirthday1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const music = document.getElementById('bg-music');
+    const images = [
+      '/image1.jpeg',
+      '/image2.jpeg',
+      '/image3.jpeg',
+      '/image4.jpeg',
+      '/image5.jpeg',
+      '/image6.jpeg',
+      '/image8.jpeg',
+      '/image9.jpeg',
+      '/image10.jpeg',
+      '/image11.jpeg'
+    ];
+    let currentSlide = 0;
+
+    function showSurprise() {
+      document.getElementById('surprise').style.display = 'block';
+      music.play();
+    }
+
+    function showVideo() {
+      document.getElementById('video-section').style.display = 'block';
+    }
+
+    function openSlideshow(index) {
+      currentSlide = index;
+      document.getElementById('slide-img').src = images[currentSlide];
+      document.getElementById('slideshow').style.display = 'flex';
+    }
+
+    function closeSlideshow() {
+      document.getElementById('slideshow').style.display = 'none';
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % images.length;
+      document.getElementById('slide-img').src = images[currentSlide];
+    }
+
+    function prevSlide() {
+      currentSlide = (currentSlide - 1 + images.length) % images.length;
+      document.getElementById('slide-img').src = images[currentSlide];
+    }
+
+    function showLetter() {
+      const modal = document.getElementById('typewriterModal');
+      const textElement = document.getElementById('typewriter-text');
+      const fullText = `My dearest Disha,
+
+Every moment spent with you is like a dream I never want to wake up from.
+Your smile brightens my darkest days and your voice is my favorite music.
+Thank you for loving me and for letting me love you.
+
+Forever yours,
+— Rajdeep 💞`;
+
+      let index = 0;
+      textElement.textContent = "";
+      modal.style.display = "flex";
+
+      const typeInterval = setInterval(() => {
+        textElement.textContent += fullText.charAt(index);
+        index++;
+        if (index >= fullText.length) clearInterval(typeInterval);
+      }, 50);
+    }
+
+    function closeLetter() {
+      document.getElementById('typewriterModal').style.display = 'none';
+    }
+
+    // Falling hearts
+    for (let i = 0; i < 50; i++) {
+      let heart = document.createElement('div');
+      heart.className = 'heart';
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.animationDuration = (3 + Math.random() * 5) + 's';
+      heart.style.top = -Math.random() * 100 + 'px';
+      document.body.appendChild(heart);
+    }
+  </script>
+
+</body>
+</html>
